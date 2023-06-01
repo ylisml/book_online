@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookonline.mapper.LoginMapper">
+
+    <resultMap id="LoginResultMap" type="com.bookonline.entity.Login">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="loginname" column="loginname" jdbcType="VARCHAR"/>
+        <result property="upassword" column="upassword" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,uname,uloginName,
+        upassword,utype
+    </sql>
+    <select id="LoginAll" resultType="com.bookonline.entity.User">
+        select * from users where  loginname=#{loginname} and upassword = #{upassword}
+    </select>
+</mapper>
