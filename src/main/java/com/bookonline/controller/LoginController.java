@@ -1,5 +1,7 @@
 package com.bookonline.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import com.bookonline.entity.User;
 import com.bookonline.md5.MD5Util;
 import com.bookonline.service.LoginService;
@@ -18,7 +20,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
     @RequestMapping("/login")
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response ,User u){
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response ){
         User user = new User();
         MD5Util md5Util = new MD5Util();
         String uname = request.getParameter("uname");
@@ -26,17 +28,18 @@ public class LoginController {
         String md5_password = md5Util.getMD5(password);
         user.setLoginname(uname);
         user.setUpassword(md5_password);
-        System.out.println(loginService.queryAll(user));
         List list = loginService.queryAll(user);
-        if (list != null && list.size() > 0) {
-            System.out.println("成功");
-
-        } else {
-            System.out.println("失败");
-        }
         ModelAndView mav = new ModelAndView();
         mav.addObject("users",user);
-        mav.setViewName("main");
+
+
+        if (list != null && list.size() > 0) {
+            System.out.println("成功");
+           mav.setViewName("redirect:listall");
+        } else {
+            System.out.println("失败");
+            mav.setViewName("login");
+        }
         return mav;
     }
 

@@ -38,7 +38,7 @@
                 </div>
                 <button type="submit">
                     <!-- 登录请求 -->
-                    <a class="a" type="submit">
+                    <a class="a">
                         注册
                         <span></span>
                         <span></span>
@@ -48,7 +48,7 @@
                 </button>
             </form>
             <div class="register">
-                <a href="#">
+                <a href="./index.jsp">
                     返回
                     <span></span>
                     <span></span>

@@ -30,9 +30,10 @@ public class BookController {
     public ModelAndView listAll(String sname, String pawd){
         System.out.println("==============list All==============");
         List list = bookService.queryAll();
+        System.out.println(list);
         ModelAndView mav = new ModelAndView();
         mav.addObject("books",list);
-        mav.setViewName("main");
+        mav.setViewName("index");
          return mav;
     }
 

@@ -48,7 +48,7 @@
 </style>
 <body>
     <div>
-        <label id="welcome">${uname}：欢迎！</label>
+        <label id="welcome">${bname}：欢迎！</label>
         <a href="#">退出</a>
     </div>
     <hr>
